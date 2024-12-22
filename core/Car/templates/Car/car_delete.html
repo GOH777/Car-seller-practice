@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Удалить машину</title>
+    <style>
+        /* Основные стили страницы */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h4 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .card-header {
+            background-color: #e74c3c;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .alert {
+            background-color: #f1c40f;
+            border: 1px solid #e67e22;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .alert strong {
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #7f8c8d;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4>Удалить машину</h4>
+            </div>
+            <div class="card-body">
+                <p class="lead">Вы уверены, что хотите удалить следующую машину?</p>
+                <div class="alert">
+                    <strong>{{ car.name }} {{ car.model_name }}</strong><br>
+                    <span>Год выпуска: {{ car.year }}</span><br>
+                    <span>Страна производитель: {{ car.country }}</span>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+                <a href="{% url 'car_list' %}" class="btn btn-secondary">Отменить</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

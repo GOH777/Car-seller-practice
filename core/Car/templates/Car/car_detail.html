@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали машины</title>
+    <style>
+        /* Стили для страницы */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .car-details {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .car-details span {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .back-btn, .edit-btn, .delete-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-btn {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .back-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .edit-btn {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #e67e22;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Детали машины: {{ car.name }} {{ car.model_name }}</h1>
+
+        <div class="car-details">
+            <span><strong>Год выпуска:</strong> {{ car.year }}</span>
+            <span><strong>Страна производитель:</strong> {{ car.country }}</span>
+        </div>
+
+        <a href="{% url 'car_list' %}" class="back-btn">Назад к списку машин</a>
+        <a href="{% url 'car_update' pk=car.pk %}" class="edit-btn">Редактировать</a>
+        <a href="{% url 'car_delete' pk=car.pk %}" class="delete-btn">Удалить</a>
+    </div>
+
+</body>
+</html>
